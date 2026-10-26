@@ -23,8 +23,15 @@
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--card);color:var(--ink);font-family:"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:16px}
 .wrap{padding:16px;max-width:1400px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:6px}
+.logo{height:70px;width:auto;display:block}
+.web{font-size:13px;color:var(--muted);text-decoration:none;letter-spacing:.02em;padding-top:4px;white-space:nowrap}
+.web:hover{text-decoration:underline}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .logo{filter:brightness(2.2) saturate(.8)} }
+@media (max-width:500px){.logo{height:46px}}
 h1{font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:32px;margin:0 0 10px;padding-bottom:10px;border-bottom:1px solid var(--soft)}
-.intro{margin:0 0 14px}
+.intro{margin:0 0 14px;display:flex;justify-content:space-between;align-items:baseline;gap:8px 16px;flex-wrap:wrap}
+.intro .web{padding-top:0}
 .panel{background:var(--bg);padding:16px 24px 24px;display:grid;grid-template-columns:minmax(280px,1fr) 2fr;gap:24px;align-items:start}
 @media (max-width:900px){.panel{grid-template-columns:1fr;padding:12px}}
 .box{background:var(--card);border:1px solid var(--soft)}
@@ -53,8 +60,14 @@ th{font-weight:700}
 </head>
 <body>
 <div class="wrap">
+  <div class="top">
+    <img class="logo" src="logo.png" alt="Emi Guitars">
+  </div>
   <h1>Bias kalkulator za lampaška pojačala</h1>
-  <p class="intro">Upiši plate voltage i odaberi power lampu, pa dobiješ bias struju po lampi za razne postotke plate dissipation.</p>
+  <div class="intro">
+    <span>Upiši plate voltage i odaberi power lampu, pa dobiješ bias struju po lampi za razne postotke plate dissipation.</span>
+    <a class="web" href="https://www.emiguitars.com" target="_blank" rel="noopener">www.emiguitars.com</a>
+  </div>
 
   <div class="panel">
     <div class="box">
