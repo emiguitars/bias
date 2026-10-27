@@ -71,7 +71,10 @@ summary::before{content:"▸";display:inline-block;width:22px;transition:transfo
 details[open] summary::before{transform:rotate(90deg)}
 details > :not(summary){margin-left:14px!important;margin-right:14px!important}
 details > .tw{margin-bottom:14px}
-table.spec{min-width:1100px;font-size:14px}
+table.spec{min-width:1450px;font-size:14px}
+table.spec td:nth-child(3){min-width:170px}
+table.spec td:nth-child(4){min-width:260px}
+table.spec td:nth-child(5){min-width:130px}
 table.spec th,table.spec td{font-size:14px;padding:7px 8px;vertical-align:middle;border-color:var(--soft)}
 table.spec th{background:#2b2b2b;color:#fff;font-weight:600;position:sticky;top:0}
 table.spec td.one{background:var(--one)}
@@ -124,22 +127,22 @@ table.spec tr.hl td{background:var(--hl)!important}
 
   <section class="specs">
     <h2 class="sh">Specifikacije lampi</h2>
-    <p class="legend"><b>Zamjena 1:1</b> (zeleno) = isti pinout i heater, jednaki ili veći limiti, ide direktno u socket - nakon zamjene samo provjeri bias. <b>Zamjena uvjetno</b> = radi samo uz uvjet napisan u zagradi. <b>Druga oznaka</b> = ista lampa pod EU/US nazivom.</p>
+    <p class="legend"><b>Zamjena 1:1</b> (zeleno) = isti socket, pinout i heater, jednaki ili veći limiti, ide direktno u socket - nakon zamjene samo provjeri bias. <b>Zamjena uvjetno</b> = radi samo uz uvjet napisan u zagradi. <b>Druga oznaka</b> = ista lampa pod EU/US nazivom.</p>
     <p class="legend muted">Vrijednosti su tipični design max iz datasheetova (približno) i razlikuju se po proizvođaču - za graničan slučaj provjeri datasheet točno te lampe.</p>
 
     <details open><summary>Power lampe</summary>
-      <p class="legend">Potrošnja heatera = 6.3 V × heater struja, po lampi. Poredano po disipaciji anode. Odabrana lampa iz kalkulatora je označena.</p>
-      <div class="tw"><table class="spec pw"><thead><tr><th>Lampa</th><th>Druga oznaka (ista lampa)</th><th>Zamjena 1:1</th><th>Zamjena uvjetno (uvjet)</th><th>Anoda max (V)</th><th>Screen max (V)</th><th>Disip. anode (W)</th><th>Disip. screena (W)</th><th>Heater 6.3 V (A)</th><th>Potrošnja heatera (W)</th><th>Tipično u</th></tr></thead><tbody><tr data-key="EL84"><td><b>EL84</b></td><td>6BQ5</td><td class="one">7189A, 6P14P, EL84M</td><td>—</td><td>300</td><td>300</td><td>12</td><td>2</td><td>0.76</td><td>4.8</td><td>Vox AC15/AC30, mali comboi</td></tr><tr data-key="6V6GT"><td><b>6V6GT</b></td><td>—</td><td class="one">6V6GTA, 6P6S, 5871</td><td>—</td><td>350</td><td>315</td><td>14</td><td>2.2</td><td>0.45</td><td>2.8</td><td>Fender Champ, Princeton, Deluxe</td></tr><tr data-key="6L6"><td><b>6L6</b> (metal)</td><td>—</td><td class="one">6L6G, 6L6GB, 5881, 6L6GC, 7581A, 6P3S</td><td>KT66 (heater 1.27 A, rebias)</td><td>360</td><td>270</td><td>19</td><td>2.5</td><td>0.9</td><td>5.7</td><td>vrlo stara pojačala</td></tr><tr data-key="6L6G"><td><b>6L6G</b></td><td>—</td><td class="one">6L6, 6L6GB, 5881, 6L6GC, 7581A, 6P3S</td><td>KT66 (heater 1.27 A, rebias)</td><td>360</td><td>270</td><td>19</td><td>2.5</td><td>0.9</td><td>5.7</td><td>stari Fender (50-e)</td></tr><tr data-key="5881"><td><b>5881</b></td><td>6L6WGB</td><td class="one">6L6GC, 6L6WGC, 7581A</td><td>6L6, 6L6G, 6P3S (samo B+ do 360 V); KT66 (heater 1.27 A, rebias)</td><td>400</td><td>400</td><td>23</td><td>3</td><td>0.9</td><td>5.7</td><td>Fender Bassman, Marshall JTM45</td></tr><tr data-key="KT66"><td><b>KT66</b></td><td>—</td><td>—</td><td>6L6GC, 7581A (rebias)</td><td>500</td><td>400</td><td>25</td><td>3.5</td><td>1.27</td><td>8.0</td><td>Marshall JTM45</td></tr><tr data-key="EL34"><td><b>EL34</b></td><td>6CA7</td><td class="one">E34L, KT77</td><td>6L6GC, 5881 (rebias)</td><td>800</td><td>425</td><td>25</td><td>8</td><td>1.5</td><td>9.4</td><td>Marshall, Hiwatt, Orange</td></tr><tr data-key="KT77"><td><b>KT77</b></td><td>—</td><td class="one">EL34, E34L</td><td>—</td><td>800</td><td>600</td><td>25</td><td>6</td><td>1.4</td><td>8.8</td><td>Marshall (umjesto EL34)</td></tr><tr data-key="6L6GC"><td><b>6L6GC</b></td><td>—</td><td class="one">7581A, 6L6WGC, 6L6GC-STR</td><td>5881 (niža disipacija, provjeri bias); KT66 (heater 1.27 A, rebias); 7027A (pin 1 i 6 na socketu moraju biti prazni)</td><td>500</td><td>450</td><td>30</td><td>5</td><td>0.9</td><td>5.7</td><td>Fender Twin, Mesa, Ampeg</td></tr><tr data-key="7581A"><td><b>7581A</b></td><td>—</td><td>—</td><td>6L6GC, 6L6WGC (niža disipacija, provjeri bias)</td><td>500</td><td>450</td><td>35</td><td>5</td><td>0.9</td><td>5.7</td><td>Mesa</td></tr><tr data-key="7027A"><td><b>7027A</b></td><td>—</td><td>—</td><td>6L6GC, 7581A (g1 mora biti na pin 5 i g2 na pin 4, ne samo na pin 1/6)</td><td>600</td><td>500</td><td>35</td><td>5</td><td>0.9</td><td>5.7</td><td>Ampeg (V-4, VT-22)</td></tr><tr data-key="6550"><td><b>6550</b></td><td>—</td><td class="one">6550A, KT88</td><td>KT120 (heater 1.8 A, rebias)</td><td>600</td><td>400</td><td>35</td><td>6</td><td>1.6</td><td>10.1</td><td>stari Ampeg SVT</td></tr><tr data-key="6550A"><td><b>6550A</b></td><td>—</td><td class="one">KT88</td><td>6550 (niža disipacija, provjeri bias); KT120 (heater 1.8 A, rebias)</td><td>660</td><td>440</td><td>42</td><td>6</td><td>1.6</td><td>10.1</td><td>Ampeg SVT</td></tr><tr data-key="KT88"><td><b>KT88</b></td><td>—</td><td class="one">6550A</td><td>6550 (niža disipacija, provjeri bias); KT120 (heater 1.8 A, rebias)</td><td>800</td><td>600</td><td>42</td><td>8</td><td>1.6</td><td>10.1</td><td>Marshall Major, bas pojačala</td></tr><tr data-key="KT120"><td><b>KT120</b></td><td>—</td><td>—</td><td>KT88, 6550A (niža disipacija, rebias)</td><td>850</td><td>650</td><td>60</td><td>8</td><td>1.8</td><td>11.3</td><td>modernizirani SVT, bas headovi</td></tr></tbody></table></div>
+      <p class="legend">Potrošnja heatera = napon × heater struja, po lampi (6.3 V osim ako piše drugačije). Poredano po disipaciji anode. Odabrana lampa iz kalkulatora je označena žuto.</p>
+      <div class="tw"><table class="spec pw"><thead><tr><th>Lampa</th><th>Druga oznaka (ista lampa)</th><th>Zamjena 1:1</th><th>Zamjena uvjetno (uvjet)</th><th>Socket / pinout</th><th>Anoda max (V)</th><th>Screen max (V)</th><th>Disip. anode (W)</th><th>Disip. screena (W)</th><th>Heater (A)</th><th>Potrošnja heatera (W)</th><th>Tipično u</th></tr></thead><tbody><tr data-key="6K6"><td><b>6K6GT</b></td><td>6K6G</td><td>—</td><td>6F6 (više struje), 6V6GT (rebias)</td><td>octal</td><td>315</td><td>285</td><td>8.5</td><td>2.8</td><td>0.4</td><td>2.5</td><td>stari Gibson, Valco, Silvertone</td></tr><tr data-key="ECL82"><td><b>ECL82</b></td><td>6BM8</td><td>—</td><td>—</td><td>noval (trioda + pentoda)</td><td>600</td><td>300</td><td>7 (pentoda)</td><td>1.8</td><td>0.78</td><td>4.9</td><td>mali Vox, Philips, Selmer</td></tr><tr data-key="EL844"><td><b>EL844</b></td><td>—</td><td>—</td><td>— (provjeri datasheet prije zamjene)</td><td>noval</td><td>~300</td><td>~250</td><td>9</td><td>—</td><td>—</td><td>—</td><td>mali europski comboi</td></tr><tr data-key="ECL86"><td><b>ECL86</b></td><td>6GW8</td><td>—</td><td>—</td><td>noval (trioda + pentoda)</td><td>600</td><td>300</td><td>9 (pentoda)</td><td>2</td><td>0.7</td><td>4.4</td><td>Vox AC4, Selmer, Philips</td></tr><tr data-key="6F6"><td><b>6F6</b></td><td>6F6G, 6F6GT</td><td class="one">6F6GT, 6F6G</td><td>6K6GT (manja snaga), 6V6GT (rebias, heater 0.45 A)</td><td>octal</td><td>375</td><td>285</td><td>11</td><td>3.75</td><td>0.7</td><td>4.4</td><td>Fender, Gibson iz 40-ih</td></tr><tr data-key="EL84"><td><b>EL84</b></td><td>6BQ5</td><td class="one">7189A, 6P14P, EL84M</td><td>—</td><td>noval</td><td>300</td><td>300</td><td>12</td><td>2</td><td>0.76</td><td>4.8</td><td>Vox AC15/AC30, mali comboi</td></tr><tr data-key="6AQ5"><td><b>6AQ5</b></td><td>EL90</td><td class="one">6AQ5A, 6005</td><td>— (NIJE EL84, drugi socket)</td><td>7-pin miniature</td><td>275</td><td>250</td><td>12</td><td>2</td><td>0.45</td><td>2.8</td><td>Gibson, Silvertone, Supro mali comboi</td></tr><tr data-key="6973"><td><b>6973</b></td><td>—</td><td>—</td><td>— (noval kao EL84, ali drugi pinout)</td><td>noval (6973 pinout)</td><td>440</td><td>300</td><td>12</td><td>2</td><td>0.45</td><td>2.8</td><td>Supro, Valco, Univox</td></tr><tr data-key="6V6GT"><td><b>6V6GT</b></td><td>—</td><td class="one">6V6GTA, 6P6S, 5871</td><td>—</td><td>octal</td><td>350</td><td>315</td><td>14</td><td>2.2</td><td>0.45</td><td>2.8</td><td>Fender Champ, Princeton, Deluxe</td></tr><tr data-key="2A3"><td><b>2A3</b></td><td>—</td><td class="one">2A3 mono-plate</td><td>— (nema gitarske zamjene)</td><td>4-pin (UX4), trioda, directly heated</td><td>300</td><td>—</td><td>15</td><td>—</td><td>2.5 V / 2.5 A</td><td>6.2</td><td>hi-fi single-ended, rijetko gitara</td></tr><tr data-key="6L6"><td><b>6L6</b> (metal)</td><td>—</td><td class="one">6L6G, 6L6GB, 5881, 6L6GC, 7581A, 6P3S</td><td>KT66 (heater 1.27 A, rebias)</td><td>octal (6L6 pinout)</td><td>360</td><td>270</td><td>19</td><td>2.5</td><td>0.9</td><td>5.7</td><td>vrlo stara pojačala</td></tr><tr data-key="6L6G"><td><b>6L6G</b></td><td>—</td><td class="one">6L6, 6L6GB, 5881, 6L6GC, 7581A, 6P3S</td><td>KT66 (heater 1.27 A, rebias)</td><td>octal (6L6 pinout)</td><td>360</td><td>270</td><td>19</td><td>2.5</td><td>0.9</td><td>5.7</td><td>stari Fender (50-e)</td></tr><tr data-key="7591"><td><b>7591</b></td><td>7591A</td><td class="one">7591A</td><td>— (octal, ali drugi pinout od 6L6)</td><td>octal (7591 pinout)</td><td>550</td><td>440</td><td>19</td><td>3.3</td><td>0.8</td><td>5.0</td><td>Ampeg Jet, Reverberocket, Gemini</td></tr><tr data-key="7868"><td><b>7868</b></td><td>—</td><td>—</td><td>—</td><td>novar (9 pin)</td><td>550</td><td>440</td><td>19</td><td>3.5</td><td>0.8</td><td>5.0</td><td>Ampeg, Magnatone, Fender (60-e)</td></tr><tr data-key="6P3S"><td><b>6P3S</b></td><td>6П3С</td><td class="one">6L6G, 6L6GB, 5881, 6L6GC</td><td>6P3S-E (jača verzija, ~500 V)</td><td>octal (6L6 pinout)</td><td>400</td><td>300</td><td>20</td><td>2.7</td><td>0.9</td><td>5.7</td><td>ruska zamjena za 6L6G</td></tr><tr data-key="5881o"><td><b>5881</b> (stara, originalna)</td><td>6L6WGB</td><td class="one">6L6GC, 6L6WGC, 7581A, 5881 nova</td><td>6L6, 6L6G, 6P3S (samo B+ do 360 V); KT66 (heater 1.27 A, rebias)</td><td>octal (6L6 pinout)</td><td>400</td><td>400</td><td>23</td><td>3</td><td>0.9</td><td>5.7</td><td>Fender Bassman, Marshall JTM45</td></tr><tr data-key="KT66"><td><b>KT66</b></td><td>—</td><td>—</td><td>6L6GC, 7581A (rebias)</td><td>octal (6L6 pinout)</td><td>500</td><td>400</td><td>25</td><td>3.5</td><td>1.27</td><td>8.0</td><td>Marshall JTM45</td></tr><tr data-key="EL34"><td><b>EL34</b></td><td>6CA7</td><td class="one">E34L, KT77</td><td>6L6GC, 5881 (rebias; pin 1 = g3)</td><td>octal (pin 1 = g3)</td><td>800</td><td>425</td><td>25</td><td>8</td><td>1.5</td><td>9.4</td><td>Marshall, Hiwatt, Orange</td></tr><tr data-key="KT77"><td><b>KT77</b></td><td>—</td><td class="one">EL34, E34L</td><td>—</td><td>octal</td><td>800</td><td>600</td><td>25</td><td>6</td><td>1.4</td><td>8.8</td><td>Marshall (umjesto EL34)</td></tr><tr data-key="5881m"><td><b>5881</b> (nova, Sovtek/Tung-Sol)</td><td>6L6WGC</td><td class="one">6L6GC, 7581A</td><td>5881 stara (niža disipacija, provjeri bias)</td><td>octal (6L6 pinout)</td><td>500</td><td>450</td><td>30</td><td>5</td><td>0.9</td><td>5.7</td><td>zamjena u Bassman, Marshall, Fender</td></tr><tr data-key="6L6GC"><td><b>6L6GC</b></td><td>—</td><td class="one">7581A, 6L6WGC, 6L6GC-STR, 5881 nova</td><td>5881 stara (niža disipacija, provjeri bias); KT66 (heater 1.27 A, rebias); 7027A (pin 1 i 6 na socketu moraju biti prazni)</td><td>octal (6L6 pinout)</td><td>500</td><td>450</td><td>30</td><td>5</td><td>0.9</td><td>5.7</td><td>Fender Twin, Mesa, Ampeg</td></tr><tr data-key="EL509"><td><b>EL509</b></td><td>6KG6</td><td class="one">6KG6A</td><td>EL519 (provjeri heater i disipaciju)</td><td>magnoval, anoda na top cap</td><td>700</td><td>275</td><td>30</td><td>7</td><td>2.0</td><td>12.6</td><td>Sound City, neki bas headovi</td></tr><tr data-key="7581A"><td><b>7581A</b></td><td>—</td><td>—</td><td>6L6GC, 6L6WGC (niža disipacija, provjeri bias)</td><td>octal (6L6 pinout)</td><td>500</td><td>450</td><td>35</td><td>5</td><td>0.9</td><td>5.7</td><td>Mesa</td></tr><tr data-key="7027A"><td><b>7027A</b></td><td>—</td><td>—</td><td>6L6GC, 7581A (g1 mora biti na pin 5 i g2 na pin 4, ne samo na pin 1/6)</td><td>octal (pin 1 i 6 = g2, g1)</td><td>600</td><td>500</td><td>35</td><td>5</td><td>0.9</td><td>5.7</td><td>Ampeg (V-4, VT-22)</td></tr><tr data-key="KT88o"><td><b>KT88</b> (stara, GEC)</td><td>—</td><td class="one">KT88 nova, 6550A</td><td>6550 (provjeri bias)</td><td>octal</td><td>800</td><td>600</td><td>35</td><td>8</td><td>1.6</td><td>10.1</td><td>stari Marshall, hi-fi</td></tr><tr data-key="6550"><td><b>6550</b></td><td>—</td><td class="one">6550A, KT88</td><td>KT120 (heater 1.8 A, rebias)</td><td>octal</td><td>600</td><td>400</td><td>35</td><td>6</td><td>1.6</td><td>10.1</td><td>stari Ampeg SVT</td></tr><tr data-key="6146"><td><b>6146B</b></td><td>—</td><td>—</td><td>6146, 6146A (manji limiti)</td><td>octal, anoda na top cap</td><td>750</td><td>250</td><td>35</td><td>3</td><td>1.125</td><td>7.1</td><td>rijetko, neki stari bas headovi</td></tr><tr data-key="300B"><td><b>300B</b></td><td>—</td><td class="one">300B (razni proizvođači)</td><td>— (nema gitarske zamjene)</td><td>4-pin (UX4), trioda, directly heated</td><td>450</td><td>—</td><td>40</td><td>—</td><td>5 V / 1.2 A</td><td>6.0</td><td>hi-fi single-ended, rijetko gitara</td></tr><tr data-key="6550A"><td><b>6550A</b></td><td>—</td><td class="one">KT88</td><td>6550 (niža disipacija, provjeri bias); KT120 (heater 1.8 A, rebias)</td><td>octal</td><td>660</td><td>440</td><td>42</td><td>6</td><td>1.6</td><td>10.1</td><td>Ampeg SVT</td></tr><tr data-key="KT88m"><td><b>KT88</b> (nova)</td><td>—</td><td class="one">6550A</td><td>6550, KT88 stara (niža disipacija, provjeri bias); KT120 (heater 1.8 A, rebias)</td><td>octal</td><td>800</td><td>600</td><td>42</td><td>8</td><td>1.6</td><td>10.1</td><td>Marshall Major, bas pojačala</td></tr><tr data-key="KT90"><td><b>KT90</b></td><td>—</td><td>—</td><td>KT88, 6550A (niža disipacija, rebias)</td><td>octal</td><td>800</td><td>650</td><td>46-50</td><td>8</td><td>1.6</td><td>10.1</td><td>bas headovi, hi-fi</td></tr><tr data-key="KT120"><td><b>KT120</b></td><td>—</td><td>—</td><td>KT88, 6550A (niža disipacija, rebias)</td><td>octal</td><td>850</td><td>650</td><td>60</td><td>8</td><td>1.8</td><td>11.3</td><td>modernizirani SVT, bas headovi</td></tr><tr data-key="KT150"><td><b>KT150</b></td><td>—</td><td>—</td><td>KT120, KT88 (niža disipacija, rebias; KT150 je viša/šira)</td><td>octal</td><td>850</td><td>650</td><td>70</td><td>9</td><td>1.75</td><td>11.0</td><td>moderni bas headovi, hi-fi</td></tr></tbody></table></div>
     </details>
 
     <details><summary>Preamp lampe</summary>
-      <p class="legend">Sve su noval s heaterom 12.6 V / 0.15 A ili 6.3 V / 0.3 A (1.9 W) i ulaze u isti socket; uvjetne zamjene mijenjaju samo gain. Gain vs ECC83 je omjer mu - stvarni gain stupnja ovisi i o anodnom i katodnom otporniku. EF86 / 6267 (pentode, Vox AC15) ima drugi pinout i nije zamjena ni za jednu od ovih.</p>
-      <div class="tw"><table class="spec pr"><thead><tr><th>Lampa</th><th>Druga oznaka (ista lampa)</th><th>Zamjena 1:1</th><th>Zamjena uvjetno (drugi gain)</th><th>mu</th><th>Gain vs ECC83</th><th>gm (mA/V)</th><th>ra (kΩ)</th><th>Anoda max (V)</th><th>Disip. po triodi (W)</th><th>Potrošnja heatera (W)</th><th>Tipično za</th></tr></thead><tbody><tr data-key="ECC83"><td><b>ECC83</b></td><td>12AX7</td><td class="one">7025, 12AX7A, 12AX7LPS, ECC803S</td><td>5751, 12AT7, 12AY7, 12AU7 (manje gaina)</td><td>100</td><td><b>100 %</b></td><td>1.6</td><td>62.5</td><td>330</td><td>1.0</td><td>1.9</td><td>gain stupnjevi, referenca</td></tr><tr data-key="12DW7"><td><b>12DW7</b></td><td>7247</td><td>—</td><td>12AX7 ili 12AU7 (obje triode isti gain)</td><td>100 / 17</td><td>100 % / 20 %</td><td>1.6 / 2.2</td><td>62.5 / 7.7</td><td>330</td><td>1.0 / 2.75</td><td>1.9</td><td>Ampeg (pola 12AX7 + pola 12AU7)</td></tr><tr data-key="5751"><td><b>5751</b></td><td>—</td><td>—</td><td>12AX7 (više gaina), 12AT7 (manje)</td><td>70</td><td>~70 %</td><td>1.2</td><td>58</td><td>330</td><td>0.8</td><td>1.9</td><td>manje gaina i šuma u V1</td></tr><tr data-key="ECC81"><td><b>ECC81</b></td><td>12AT7</td><td class="one">6201, 6679, ECC801S, E81CC</td><td>12AX7 (više), 12AY7, 12AU7 (manje)</td><td>60</td><td>~60 %</td><td>5.5</td><td>10.9</td><td>300</td><td>2.5</td><td>1.9</td><td>phase inverter, reverb driver</td></tr><tr data-key="12AY7"><td><b>12AY7</b></td><td>6072</td><td class="one">6072A</td><td>12AT7, 5751 (više), 12AU7 (manje)</td><td>44</td><td>~45 %</td><td>1.75</td><td>25</td><td>300</td><td>1.5</td><td>1.9</td><td>Fender tweed V1</td></tr><tr data-key="ECC82"><td><b>ECC82</b></td><td>12AU7</td><td class="one">5814, 5814A, 6189, ECC802S, E82CC</td><td>12AY7, 12AT7 (više gaina)</td><td>17</td><td>~20 %</td><td>2.2</td><td>7.7</td><td>330</td><td>2.75</td><td>1.9</td><td>phase inverter, cathode follower</td></tr></tbody></table></div>
+      <p class="legend">Noval triode (ECC8x, 12xx7, 5751) ulaze u isti socket i uvjetne zamjene mijenjaju samo gain. Octal (6SL7, 6SN7), ECC88 i EF86 imaju drugi socket, pinout ili heater - vidi kolonu Socket i uvjet. Gain vs ECC83 je omjer mu - stvarni gain stupnja ovisi i o anodnom i katodnom otporniku.</p>
+      <div class="tw"><table class="spec pr"><thead><tr><th>Lampa</th><th>Druga oznaka (ista lampa)</th><th>Zamjena 1:1</th><th>Zamjena uvjetno (drugi gain)</th><th>Socket</th><th>mu</th><th>Gain vs ECC83</th><th>gm (mA/V)</th><th>ra (kΩ)</th><th>Anoda max (V)</th><th>Disip. po triodi (W)</th><th>Heater (V / A)</th><th>Potrošnja heatera (W)</th><th>Tipično za</th></tr></thead><tbody><tr data-key="ECC83"><td><b>ECC83</b></td><td>12AX7</td><td class="one">7025, 12AX7A, 12AX7LPS, ECC803S</td><td>5751, 12AT7, 12AY7, 12AU7 (manje gaina)</td><td>noval</td><td>100</td><td><b>100 %</b></td><td>1.6</td><td>62.5</td><td>330</td><td>1.0</td><td>6.3 / 0.3 ili 12.6 / 0.15</td><td>1.9</td><td>gain stupnjevi, referenca</td></tr><tr data-key="12DW7"><td><b>12DW7</b></td><td>7247</td><td>—</td><td>12AX7 ili 12AU7 (obje triode isti gain)</td><td>noval</td><td>100 / 17</td><td>100 % / 20 %</td><td>1.6 / 2.2</td><td>62.5 / 7.7</td><td>330</td><td>1.0 / 2.75</td><td>6.3 / 0.3 ili 12.6 / 0.15</td><td>1.9</td><td>Ampeg (pola 12AX7 + pola 12AU7)</td></tr><tr data-key="5751"><td><b>5751</b></td><td>—</td><td>—</td><td>12AX7 (više gaina), 12AT7 (manje)</td><td>noval</td><td>70</td><td>~70 %</td><td>1.2</td><td>58</td><td>330</td><td>0.8</td><td>6.3 / 0.3 ili 12.6 / 0.15</td><td>1.9</td><td>manje gaina i šuma u V1</td></tr><tr data-key="6SL7"><td><b>6SL7</b></td><td>6SL7GT</td><td class="one">6SL7GTB, 5691, 6N9S</td><td>6SN7 (manje gaina, heater 0.6 A)</td><td>octal</td><td>70</td><td>~70 %</td><td>1.6</td><td>44</td><td>300</td><td>1.0</td><td>6.3 / 0.3</td><td>1.9</td><td>Ampeg B-15, stari Fender, Gibson</td></tr><tr data-key="ECC81"><td><b>ECC81</b></td><td>12AT7</td><td class="one">6201, 6679, ECC801S, E81CC</td><td>12AX7 (više), 12AY7, 12AU7 (manje)</td><td>noval</td><td>60</td><td>~60 %</td><td>5.5</td><td>10.9</td><td>300</td><td>2.5</td><td>6.3 / 0.3 ili 12.6 / 0.15</td><td>1.9</td><td>phase inverter, reverb driver</td></tr><tr data-key="12AY7"><td><b>12AY7</b></td><td>6072</td><td class="one">6072A</td><td>12AT7, 5751 (više), 12AU7 (manje)</td><td>noval</td><td>44</td><td>~45 %</td><td>1.75</td><td>25</td><td>300</td><td>1.5</td><td>6.3 / 0.3 ili 12.6 / 0.15</td><td>1.9</td><td>Fender tweed V1</td></tr><tr data-key="ECC88"><td><b>ECC88</b></td><td>6DJ8</td><td class="one">6922, E88CC, 7308, 6N23P</td><td>— (heater SAMO 6.3 V, nema 12.6 V spoja; pin 9 = shield)</td><td>noval</td><td>33</td><td>~33 %</td><td>12.5</td><td>2.6</td><td>130-220</td><td>1.5</td><td>6.3 / 0.365</td><td>2.3</td><td>moderni bas preampovi, hi-fi</td></tr><tr data-key="6SN7"><td><b>6SN7</b></td><td>6SN7GT</td><td class="one">6SN7GTB, 5692, 6N8S</td><td>6SL7 (više gaina, heater 0.3 A)</td><td>octal</td><td>20</td><td>~20 %</td><td>2.6</td><td>7.7</td><td>450</td><td>3.5</td><td>6.3 / 0.6</td><td>3.8</td><td>phase inverter, driver, Ampeg</td></tr><tr data-key="ECC82"><td><b>ECC82</b></td><td>12AU7</td><td class="one">5814, 5814A, 6189, ECC802S, E82CC</td><td>12AY7, 12AT7 (više gaina)</td><td>noval</td><td>17</td><td>~20 %</td><td>2.2</td><td>7.7</td><td>330</td><td>2.75</td><td>6.3 / 0.3 ili 12.6 / 0.15</td><td>1.9</td><td>phase inverter, cathode follower</td></tr><tr data-key="EF86"><td><b>EF86</b></td><td>6267</td><td class="one">Z729, EF86 (JJ, EH)</td><td>— (pentoda, drugi pinout od ECC83)</td><td>noval (pentoda)</td><td>—</td><td>pentoda, više od ECC83 stupnja</td><td>2.0</td><td>2500</td><td>300</td><td>1.0</td><td>6.3 / 0.2</td><td>1.3</td><td>Vox AC15, Matchless</td></tr></tbody></table></div>
     </details>
 
     <details><summary>Rectifier lampe</summary>
       <p class="legend"><b>Potrošnja heatera</b> = koliko lampa sama troši s heater namotaja na PT-u (V × A). <b>Smije propustiti</b> = max DC struja koju rectifier daje u B+ za ostatak pojačala. Manji pad napona = viši B+.</p>
-      <div class="tw"><table class="spec rc"><thead><tr><th>Lampa</th><th>Druga oznaka (ista lampa)</th><th>Zamjena 1:1</th><th>Zamjena uvjetno (uvjet)</th><th>Heater (V / A)</th><th>Potrošnja heatera (W)</th><th>Smije propustiti B+ DC max (mA)</th><th>Pad napona (V, approx.)</th><th>Tipično u</th></tr></thead><tbody><tr data-key="5Y3GT"><td><b>5Y3GT</b></td><td>—</td><td class="one">5Y3GB, 5Z4P</td><td>GZ34 (B+ raste ~30 V); 5U4GB (heater 3 A na 5 V namotaju, provjeri PT)</td><td>5 V / 2 A</td><td>10</td><td>125</td><td>~50</td><td>Fender Champ, Princeton, Deluxe</td></tr><tr data-key="EZ81"><td><b>EZ81</b></td><td>6CA4</td><td>—</td><td>—</td><td>6.3 V / 1 A</td><td>6.3</td><td>150</td><td>~25</td><td>Vox AC15/AC30 (noval)</td></tr><tr data-key="GZ34"><td><b>GZ34</b></td><td>5AR4</td><td class="one">GZ34S, 52KU</td><td>5U4GB (B+ pada ~25 V, heater 3 A, provjeri PT); 5Y3GT (samo do 125 mA)</td><td>5 V / 1.9 A</td><td>9.5</td><td>250</td><td>~17</td><td>Marshall JTM45, Fender, Vox</td></tr><tr data-key="5U4GB"><td><b>5U4GB</b></td><td>—</td><td class="one">5AS4A, 5U4GB (JJ)</td><td>GZ34 (B+ raste ~25 V, max 250 mA); 5U4G, 5Ц3С (podnose samo ~225-230 mA)</td><td>5 V / 3 A</td><td>15</td><td>275</td><td>~45</td><td>Fender Bassman, Twin (stari)</td></tr></tbody></table></div>
+      <div class="tw"><table class="spec rc"><thead><tr><th>Lampa</th><th>Druga oznaka (ista lampa)</th><th>Zamjena 1:1</th><th>Zamjena uvjetno (uvjet)</th><th>Socket</th><th>Heater (V / A)</th><th>Potrošnja heatera (W)</th><th>Smije propustiti B+ DC max (mA)</th><th>Pad napona (V, approx.)</th><th>Tipično u</th></tr></thead><tbody><tr data-key="EZ80"><td><b>EZ80</b></td><td>6V4</td><td class="one">6V4</td><td>EZ81 (više struje, heater 1 A na 6.3 V)</td><td>noval</td><td>6.3 V / 0.6 A</td><td>3.8</td><td>90</td><td>~20</td><td>Vox AC4, mala europska pojačala</td></tr><tr data-key="5Y3GT"><td><b>5Y3GT</b></td><td>—</td><td class="one">5Y3GB, 5Z4P</td><td>GZ34 (B+ raste ~30 V); 5U4GB (heater 3 A na 5 V namotaju, provjeri PT)</td><td>octal</td><td>5 V / 2 A</td><td>10</td><td>125</td><td>~50</td><td>Fender Champ, Princeton, Deluxe</td></tr><tr data-key="EZ81"><td><b>EZ81</b></td><td>6CA4</td><td>—</td><td>—</td><td>noval</td><td>6.3 V / 1 A</td><td>6.3</td><td>150</td><td>~25</td><td>Vox AC15/AC30</td></tr><tr data-key="5V4G"><td><b>5V4G</b></td><td>GZ32</td><td class="one">5V4GA, GZ32</td><td>GZ34 (B+ raste ~10 V, heater 1.9 A)</td><td>octal</td><td>5 V / 2 A</td><td>10</td><td>175</td><td>~25</td><td>Fender Tremolux, rani Vox AC30</td></tr><tr data-key="GZ34"><td><b>GZ34</b></td><td>5AR4</td><td class="one">GZ34S, 52KU</td><td>5U4GB (B+ pada ~25 V, heater 3 A, provjeri PT); 5Y3GT (samo do 125 mA)</td><td>octal</td><td>5 V / 1.9 A</td><td>9.5</td><td>250</td><td>~17</td><td>Marshall JTM45, Fender, Vox</td></tr><tr data-key="5R4GY"><td><b>5R4GY</b></td><td>—</td><td class="one">5R4GYB, 5R4GYA</td><td>5U4GB (manji pad, B+ raste)</td><td>octal</td><td>5 V / 2 A</td><td>10</td><td>250</td><td>~60</td><td>Ampeg, Sunn, Silvertone (visoki B+)</td></tr><tr data-key="5U4GB"><td><b>5U4GB</b></td><td>—</td><td class="one">5AS4A, 5U4GB (JJ)</td><td>GZ34 (B+ raste ~25 V, max 250 mA); 5U4G, 5Ц3С (podnose samo ~225-230 mA)</td><td>octal</td><td>5 V / 3 A</td><td>15</td><td>275</td><td>~45</td><td>Fender Bassman, Twin (stari)</td></tr><tr data-key="GZ37"><td><b>GZ37</b></td><td>—</td><td>—</td><td>GZ34 (manje struje, B+ sličan); 5U4GB (veći pad)</td><td>octal</td><td>5 V / 2.8 A</td><td>14</td><td>350</td><td>~20</td><td>jača europska pojačala</td></tr></tbody></table></div>
     </details>
 
     <details><summary>Bias - formula i mjerenje</summary>
@@ -156,34 +159,41 @@ table.spec tr.hl td{background:var(--hl)!important}
 
 <script>
 const TUBES = [
-  ["2A3", 15],
-  ["300B", 40],
-  ["5881 (originalna)", 23],
-  ["5881 (moderna Sovtek/Tung-Sol)", 30],
-  ["6550", 35],
-  ["6550A", 42],
-  ["6973", 12],
-  ["6CA7", 25],
-  ["6L6", 19],
-  ["6L6G", 19],
-  ["6L6GC", 30],
-  ["6P3S", 20],
-  ["6V6GT", 14],
-  ["7027A", 35],
-  ["7581A", 35],
-  ["7591", 19],
-  ["7868", 19],
-  ["EL34", 25],
-  ["EL84", 12],
-  ["EL844", 9],
-  ["KT66", 25],
-  ["KT77", 25],
-  ["KT88 (stari GEC)", 35],
-  ["KT88 (moderna)", 42],
-  ["KT90", 46],
-  ["KT90", 50],
-  ["KT120", 60],
-  ["KT150", 70]
+  ["2A3", 15, "2A3"],
+  ["300B", 40, "300B"],
+  ["5881 (stara, originalna)", 23, "5881o"],
+  ["5881 (nova, Sovtek/Tung-Sol)", 30, "5881m"],
+  ["6146B", 35, "6146"],
+  ["6550", 35, "6550"],
+  ["6550A", 42, "6550A"],
+  ["6973", 12, "6973"],
+  ["6AQ5 / EL90", 12, "6AQ5"],
+  ["6CA7", 25, "EL34"],
+  ["6F6", 11, "6F6"],
+  ["6K6GT", 8.5, "6K6"],
+  ["6L6", 19, "6L6"],
+  ["6L6G", 19, "6L6G"],
+  ["6L6GC", 30, "6L6GC"],
+  ["6P3S", 20, "6P3S"],
+  ["6V6GT", 14, "6V6GT"],
+  ["7027A", 35, "7027A"],
+  ["7581A", 35, "7581A"],
+  ["7591", 19, "7591"],
+  ["7868", 19, "7868"],
+  ["ECL82 / 6BM8", 7, "ECL82"],
+  ["ECL86 / 6GW8", 9, "ECL86"],
+  ["EL34", 25, "EL34"],
+  ["EL509 / 6KG6", 30, "EL509"],
+  ["EL84", 12, "EL84"],
+  ["EL844", 9, "EL844"],
+  ["KT66", 25, "KT66"],
+  ["KT77", 25, "KT77"],
+  ["KT88 (stara, GEC)", 35, "KT88o"],
+  ["KT88 (nova)", 42, "KT88m"],
+  ["KT90", 46, "KT90"],
+  ["KT90", 50, "KT90"],
+  ["KT120", 60, "KT120"],
+  ["KT150", 70, "KT150"]
 ];
 const POINTS = [60, 70, 80, 90, 100, 110];
 const $ = id => document.getElementById(id);
@@ -193,27 +203,25 @@ sel.innerHTML = '<option value="">- Odaberi -</option>' +
 
 const fmt = v => v.toFixed(2) + " mA";
 const cls = p => p >= 100 ? "over" : (p === 70 || p === 90 ? "rec" : "");
-function highlight(name){
-  let k = name.split(" ")[0];
-  if (k === "6CA7") k = "EL34";
+function highlight(k){
   document.querySelectorAll("table.spec.pw tr[data-key]").forEach(tr => tr.classList.toggle("hl", tr.dataset.key === k));
 }
 function calc(){
   const va = parseFloat(String($("va").value).replace(",", "."));
   if (sel.value === "" || !(va > 0)) { $("res").classList.add("hidden"); return; }
-  const [name, pa] = TUBES[+sel.value];
+  const [name, pa, key] = TUBES[+sel.value];
   $("rTube").textContent = name;
   $("rPa").textContent = pa + " W";
   $("rVa").textContent = va + " V";
   $("pts").innerHTML =
     "<tr>" + POINTS.map(p => `<th class="${cls(p)}">${p}% Bias Point</th>`).join("") + "</tr>" +
     "<tr>" + POINTS.map(p => `<td class="${cls(p)}">${fmt(p/100*pa/va*1000)}</td>`).join("") + "</tr>";
-  highlight(name);
+  highlight(key);
   $("res").classList.remove("hidden");
-  try { localStorage.setItem("bias.va", $("va").value); localStorage.setItem("bias.tube", sel.value); } catch(e) {}
+  try { localStorage.setItem("bias.va", $("va").value); localStorage.setItem("bias.tube2", sel.value); } catch(e) {}
 }
 try {
-  const v = localStorage.getItem("bias.va"), t = localStorage.getItem("bias.tube");
+  const v = localStorage.getItem("bias.va"), t = localStorage.getItem("bias.tube2");
   if (v) $("va").value = v;
   if (t !== null && t < TUBES.length) sel.value = t;
 } catch(e) {}
