@@ -56,6 +56,31 @@ th{font-weight:700}
 .tw{overflow-x:auto}
 .note{color:var(--muted);font-size:13.5px;margin:12px 0 0}
 #res.hidden{display:none}
+
+:root{--over:#fbe3e1;--over-ink:#9b2c22;--hl:#fff3c4;--one:#e6f2e6}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--over:#3d2220;--over-ink:#f2a39b;--hl:#4a3f12;--one:#203322}}
+.pts .over{background:var(--over);color:var(--over-ink)}
+.specs{margin-top:28px}
+.sh{font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:26px;margin:0 0 8px;padding-bottom:8px;border-bottom:1px solid var(--soft)}
+.legend{font-size:14px;margin:6px 0 10px}
+.legend.muted{color:var(--muted);font-size:13px}
+details{border:1px solid var(--soft);margin:10px 0;background:var(--card)}
+summary{cursor:pointer;padding:14px 16px;font-size:18px;background:var(--head);list-style:none;user-select:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"▸";display:inline-block;width:22px;transition:transform .15s}
+details[open] summary::before{transform:rotate(90deg)}
+details > :not(summary){margin-left:14px!important;margin-right:14px!important}
+details > .tw{margin-bottom:14px}
+table.spec{min-width:1100px;font-size:14px}
+table.spec th,table.spec td{font-size:14px;padding:7px 8px;vertical-align:middle;border-color:var(--soft)}
+table.spec th{background:#2b2b2b;color:#fff;font-weight:600;position:sticky;top:0}
+table.spec td.one{background:var(--one)}
+table.spec td:first-child,table.spec th:first-child{position:sticky;left:0;z-index:1;white-space:nowrap}
+table.spec td:first-child{background:var(--card)}
+table.spec th:first-child{z-index:2}
+table.spec tr.hl td{background:var(--hl)!important}
+.biasbox{padding:4px 0 10px;font-size:15px}
+.biasbox p{margin:8px 0}
 </style>
 </head>
 <body>
@@ -96,6 +121,37 @@ th{font-weight:700}
       <p class="note">I = P / V &nbsp;·&nbsp; struja je po lampi (plate current). Na 1 Ω katodnom resistoru mV = mA (ali tamo mjeriš i screen struju, ~5 % više).</p>
     </div>
   </div>
+
+  <section class="specs">
+    <h2 class="sh">Specifikacije lampi</h2>
+    <p class="legend"><b>Zamjena 1:1</b> (zeleno) = isti pinout i heater, jednaki ili veći limiti, ide direktno u socket - nakon zamjene samo provjeri bias. <b>Zamjena uvjetno</b> = radi samo uz uvjet napisan u zagradi. <b>Druga oznaka</b> = ista lampa pod EU/US nazivom.</p>
+    <p class="legend muted">Vrijednosti su tipični design max iz datasheetova (približno) i razlikuju se po proizvođaču - za graničan slučaj provjeri datasheet točno te lampe.</p>
+
+    <details open><summary>Power lampe</summary>
+      <p class="legend">Potrošnja heatera = 6.3 V × heater struja, po lampi. Poredano po disipaciji anode. Odabrana lampa iz kalkulatora je označena.</p>
+      <div class="tw"><table class="spec pw"><thead><tr><th>Lampa</th><th>Druga oznaka (ista lampa)</th><th>Zamjena 1:1</th><th>Zamjena uvjetno (uvjet)</th><th>Anoda max (V)</th><th>Screen max (V)</th><th>Disip. anode (W)</th><th>Disip. screena (W)</th><th>Heater 6.3 V (A)</th><th>Potrošnja heatera (W)</th><th>Tipično u</th></tr></thead><tbody><tr data-key="EL84"><td><b>EL84</b></td><td>6BQ5</td><td class="one">7189A, 6P14P, EL84M</td><td>—</td><td>300</td><td>300</td><td>12</td><td>2</td><td>0.76</td><td>4.8</td><td>Vox AC15/AC30, mali comboi</td></tr><tr data-key="6V6GT"><td><b>6V6GT</b></td><td>—</td><td class="one">6V6GTA, 6P6S, 5871</td><td>—</td><td>350</td><td>315</td><td>14</td><td>2.2</td><td>0.45</td><td>2.8</td><td>Fender Champ, Princeton, Deluxe</td></tr><tr data-key="6L6"><td><b>6L6</b> (metal)</td><td>—</td><td class="one">6L6G, 6L6GB, 5881, 6L6GC, 7581A, 6P3S</td><td>KT66 (heater 1.27 A, rebias)</td><td>360</td><td>270</td><td>19</td><td>2.5</td><td>0.9</td><td>5.7</td><td>vrlo stara pojačala</td></tr><tr data-key="6L6G"><td><b>6L6G</b></td><td>—</td><td class="one">6L6, 6L6GB, 5881, 6L6GC, 7581A, 6P3S</td><td>KT66 (heater 1.27 A, rebias)</td><td>360</td><td>270</td><td>19</td><td>2.5</td><td>0.9</td><td>5.7</td><td>stari Fender (50-e)</td></tr><tr data-key="5881"><td><b>5881</b></td><td>6L6WGB</td><td class="one">6L6GC, 6L6WGC, 7581A</td><td>6L6, 6L6G, 6P3S (samo B+ do 360 V); KT66 (heater 1.27 A, rebias)</td><td>400</td><td>400</td><td>23</td><td>3</td><td>0.9</td><td>5.7</td><td>Fender Bassman, Marshall JTM45</td></tr><tr data-key="KT66"><td><b>KT66</b></td><td>—</td><td>—</td><td>6L6GC, 7581A (rebias)</td><td>500</td><td>400</td><td>25</td><td>3.5</td><td>1.27</td><td>8.0</td><td>Marshall JTM45</td></tr><tr data-key="EL34"><td><b>EL34</b></td><td>6CA7</td><td class="one">E34L, KT77</td><td>6L6GC, 5881 (rebias)</td><td>800</td><td>425</td><td>25</td><td>8</td><td>1.5</td><td>9.4</td><td>Marshall, Hiwatt, Orange</td></tr><tr data-key="KT77"><td><b>KT77</b></td><td>—</td><td class="one">EL34, E34L</td><td>—</td><td>800</td><td>600</td><td>25</td><td>6</td><td>1.4</td><td>8.8</td><td>Marshall (umjesto EL34)</td></tr><tr data-key="6L6GC"><td><b>6L6GC</b></td><td>—</td><td class="one">7581A, 6L6WGC, 6L6GC-STR</td><td>5881 (niža disipacija, provjeri bias); KT66 (heater 1.27 A, rebias); 7027A (pin 1 i 6 na socketu moraju biti prazni)</td><td>500</td><td>450</td><td>30</td><td>5</td><td>0.9</td><td>5.7</td><td>Fender Twin, Mesa, Ampeg</td></tr><tr data-key="7581A"><td><b>7581A</b></td><td>—</td><td>—</td><td>6L6GC, 6L6WGC (niža disipacija, provjeri bias)</td><td>500</td><td>450</td><td>35</td><td>5</td><td>0.9</td><td>5.7</td><td>Mesa</td></tr><tr data-key="7027A"><td><b>7027A</b></td><td>—</td><td>—</td><td>6L6GC, 7581A (g1 mora biti na pin 5 i g2 na pin 4, ne samo na pin 1/6)</td><td>600</td><td>500</td><td>35</td><td>5</td><td>0.9</td><td>5.7</td><td>Ampeg (V-4, VT-22)</td></tr><tr data-key="6550"><td><b>6550</b></td><td>—</td><td class="one">6550A, KT88</td><td>KT120 (heater 1.8 A, rebias)</td><td>600</td><td>400</td><td>35</td><td>6</td><td>1.6</td><td>10.1</td><td>stari Ampeg SVT</td></tr><tr data-key="6550A"><td><b>6550A</b></td><td>—</td><td class="one">KT88</td><td>6550 (niža disipacija, provjeri bias); KT120 (heater 1.8 A, rebias)</td><td>660</td><td>440</td><td>42</td><td>6</td><td>1.6</td><td>10.1</td><td>Ampeg SVT</td></tr><tr data-key="KT88"><td><b>KT88</b></td><td>—</td><td class="one">6550A</td><td>6550 (niža disipacija, provjeri bias); KT120 (heater 1.8 A, rebias)</td><td>800</td><td>600</td><td>42</td><td>8</td><td>1.6</td><td>10.1</td><td>Marshall Major, bas pojačala</td></tr><tr data-key="KT120"><td><b>KT120</b></td><td>—</td><td>—</td><td>KT88, 6550A (niža disipacija, rebias)</td><td>850</td><td>650</td><td>60</td><td>8</td><td>1.8</td><td>11.3</td><td>modernizirani SVT, bas headovi</td></tr></tbody></table></div>
+    </details>
+
+    <details><summary>Preamp lampe</summary>
+      <p class="legend">Sve su noval s heaterom 12.6 V / 0.15 A ili 6.3 V / 0.3 A (1.9 W) i ulaze u isti socket; uvjetne zamjene mijenjaju samo gain. Gain vs ECC83 je omjer mu - stvarni gain stupnja ovisi i o anodnom i katodnom otporniku. EF86 / 6267 (pentode, Vox AC15) ima drugi pinout i nije zamjena ni za jednu od ovih.</p>
+      <div class="tw"><table class="spec pr"><thead><tr><th>Lampa</th><th>Druga oznaka (ista lampa)</th><th>Zamjena 1:1</th><th>Zamjena uvjetno (drugi gain)</th><th>mu</th><th>Gain vs ECC83</th><th>gm (mA/V)</th><th>ra (kΩ)</th><th>Anoda max (V)</th><th>Disip. po triodi (W)</th><th>Potrošnja heatera (W)</th><th>Tipično za</th></tr></thead><tbody><tr data-key="ECC83"><td><b>ECC83</b></td><td>12AX7</td><td class="one">7025, 12AX7A, 12AX7LPS, ECC803S</td><td>5751, 12AT7, 12AY7, 12AU7 (manje gaina)</td><td>100</td><td><b>100 %</b></td><td>1.6</td><td>62.5</td><td>330</td><td>1.0</td><td>1.9</td><td>gain stupnjevi, referenca</td></tr><tr data-key="12DW7"><td><b>12DW7</b></td><td>7247</td><td>—</td><td>12AX7 ili 12AU7 (obje triode isti gain)</td><td>100 / 17</td><td>100 % / 20 %</td><td>1.6 / 2.2</td><td>62.5 / 7.7</td><td>330</td><td>1.0 / 2.75</td><td>1.9</td><td>Ampeg (pola 12AX7 + pola 12AU7)</td></tr><tr data-key="5751"><td><b>5751</b></td><td>—</td><td>—</td><td>12AX7 (više gaina), 12AT7 (manje)</td><td>70</td><td>~70 %</td><td>1.2</td><td>58</td><td>330</td><td>0.8</td><td>1.9</td><td>manje gaina i šuma u V1</td></tr><tr data-key="ECC81"><td><b>ECC81</b></td><td>12AT7</td><td class="one">6201, 6679, ECC801S, E81CC</td><td>12AX7 (više), 12AY7, 12AU7 (manje)</td><td>60</td><td>~60 %</td><td>5.5</td><td>10.9</td><td>300</td><td>2.5</td><td>1.9</td><td>phase inverter, reverb driver</td></tr><tr data-key="12AY7"><td><b>12AY7</b></td><td>6072</td><td class="one">6072A</td><td>12AT7, 5751 (više), 12AU7 (manje)</td><td>44</td><td>~45 %</td><td>1.75</td><td>25</td><td>300</td><td>1.5</td><td>1.9</td><td>Fender tweed V1</td></tr><tr data-key="ECC82"><td><b>ECC82</b></td><td>12AU7</td><td class="one">5814, 5814A, 6189, ECC802S, E82CC</td><td>12AY7, 12AT7 (više gaina)</td><td>17</td><td>~20 %</td><td>2.2</td><td>7.7</td><td>330</td><td>2.75</td><td>1.9</td><td>phase inverter, cathode follower</td></tr></tbody></table></div>
+    </details>
+
+    <details><summary>Rectifier lampe</summary>
+      <p class="legend"><b>Potrošnja heatera</b> = koliko lampa sama troši s heater namotaja na PT-u (V × A). <b>Smije propustiti</b> = max DC struja koju rectifier daje u B+ za ostatak pojačala. Manji pad napona = viši B+.</p>
+      <div class="tw"><table class="spec rc"><thead><tr><th>Lampa</th><th>Druga oznaka (ista lampa)</th><th>Zamjena 1:1</th><th>Zamjena uvjetno (uvjet)</th><th>Heater (V / A)</th><th>Potrošnja heatera (W)</th><th>Smije propustiti B+ DC max (mA)</th><th>Pad napona (V, approx.)</th><th>Tipično u</th></tr></thead><tbody><tr data-key="5Y3GT"><td><b>5Y3GT</b></td><td>—</td><td class="one">5Y3GB, 5Z4P</td><td>GZ34 (B+ raste ~30 V); 5U4GB (heater 3 A na 5 V namotaju, provjeri PT)</td><td>5 V / 2 A</td><td>10</td><td>125</td><td>~50</td><td>Fender Champ, Princeton, Deluxe</td></tr><tr data-key="EZ81"><td><b>EZ81</b></td><td>6CA4</td><td>—</td><td>—</td><td>6.3 V / 1 A</td><td>6.3</td><td>150</td><td>~25</td><td>Vox AC15/AC30 (noval)</td></tr><tr data-key="GZ34"><td><b>GZ34</b></td><td>5AR4</td><td class="one">GZ34S, 52KU</td><td>5U4GB (B+ pada ~25 V, heater 3 A, provjeri PT); 5Y3GT (samo do 125 mA)</td><td>5 V / 1.9 A</td><td>9.5</td><td>250</td><td>~17</td><td>Marshall JTM45, Fender, Vox</td></tr><tr data-key="5U4GB"><td><b>5U4GB</b></td><td>—</td><td class="one">5AS4A, 5U4GB (JJ)</td><td>GZ34 (B+ raste ~25 V, max 250 mA); 5U4G, 5Ц3С (podnose samo ~225-230 mA)</td><td>5 V / 3 A</td><td>15</td><td>275</td><td>~45</td><td>Fender Bassman, Twin (stari)</td></tr></tbody></table></div>
+    </details>
+
+    <details><summary>Bias - formula i mjerenje</summary>
+      <div class="biasbox">
+        <p><b>Ia = P × postotak / Va</b> &nbsp;·&nbsp; P = max disipacija anode (W), Va = plate voltage (V)</p>
+        <p>Class AB push-pull: cilj 60-70 % · Class A / cathode bias: do ~90 %. Iznad 100 % lampa radi preko max disipacije.</p>
+        <p><b>1 Ω resistor na katodi:</b> mV na multimetru = mA. Tamo mjeriš Ia + screen struju, pa broj iz kalkulatora pomnoži s <b>1.05</b>.<br>
+        Primjer: 5881, 420 V, 60 % → kalkulator 32.86 mA → na 1 Ω namjesti ≈ 34.5 mV.</p>
+        <p><b>OT shunt / OT DCR metoda:</b> mjeri samo Ia - broj iz kalkulatora koristi direktno.</p>
+      </div>
+    </details>
+  </section>
 </div>
 
 <script>
@@ -136,6 +192,12 @@ sel.innerHTML = '<option value="">- Odaberi -</option>' +
   TUBES.map((t, i) => `<option value="${i}">${t[0]} - ${t[1]}W</option>`).join("");
 
 const fmt = v => v.toFixed(2) + " mA";
+const cls = p => p >= 100 ? "over" : (p === 70 || p === 90 ? "rec" : "");
+function highlight(name){
+  let k = name.split(" ")[0];
+  if (k === "6CA7") k = "EL34";
+  document.querySelectorAll("table.spec.pw tr[data-key]").forEach(tr => tr.classList.toggle("hl", tr.dataset.key === k));
+}
 function calc(){
   const va = parseFloat(String($("va").value).replace(",", "."));
   if (sel.value === "" || !(va > 0)) { $("res").classList.add("hidden"); return; }
@@ -144,8 +206,9 @@ function calc(){
   $("rPa").textContent = pa + " W";
   $("rVa").textContent = va + " V";
   $("pts").innerHTML =
-    "<tr>" + POINTS.map(p => `<th class="${p===70||p===90?"rec":""}">${p}% Bias Point</th>`).join("") + "</tr>" +
-    "<tr>" + POINTS.map(p => `<td class="${p===70||p===90?"rec":""}">${fmt(p/100*pa/va*1000)}</td>`).join("") + "</tr>";
+    "<tr>" + POINTS.map(p => `<th class="${cls(p)}">${p}% Bias Point</th>`).join("") + "</tr>" +
+    "<tr>" + POINTS.map(p => `<td class="${cls(p)}">${fmt(p/100*pa/va*1000)}</td>`).join("") + "</tr>";
+  highlight(name);
   $("res").classList.remove("hidden");
   try { localStorage.setItem("bias.va", $("va").value); localStorage.setItem("bias.tube", sel.value); } catch(e) {}
 }
